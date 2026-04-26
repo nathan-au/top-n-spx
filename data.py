@@ -1,4 +1,28 @@
-top_20_spx_companies_by_year = {
+# Data as of April 24, 2026, 16:00 ET
+
+top_20_spx_companies_by_market_cap_by_year = {
+    2026: {
+        1: {"name": "NVIDIA", "ticker": "NVDA", "market_cap": "5.061T"},
+        2: {"name": "Alphabet", "ticker": "GOOGL", "market_cap": "4.166T"},
+        3: {"name": "Apple", "ticker": "AAPL", "market_cap": "3.979T"},
+        4: {"name": "Microsoft", "ticker": "MSFT", "market_cap": "3.153T"},
+        5: {"name": "Amazon", "ticker": "AMZN", "market_cap": "2.834T"},
+        6: {"name": "Broadcom", "ticker": "AVGO", "market_cap": "2.002T"},
+        7: {"name": "Meta Platforms", "ticker": "META", "market_cap": "1.708T"},
+        8: {"name": "Tesla", "ticker": "TSLA", "market_cap": "1.413T"},
+        9: {"name": "Walmart", "ticker": "WMT", "market_cap": "1.036T"},
+        10: {"name": "Berkshire Hathaway", "ticker": "BRK-A", "market_cap": "1.012T"},
+        11: {"name": "JPMorgan Chase", "ticker": "JPM", "market_cap": "826.04B"},
+        12: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "789.69B"},
+        13: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "620.47B"},
+        14: {"name": "Visa", "ticker": "V", "market_cap": "595.08B"},
+        15: {"name": "Advanced Micro Devices", "ticker": "AMD", "market_cap": "567.05B"},
+        16: {"name": "Micron Technology", "ticker": "MU", "market_cap": "560.17B"},
+        17: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "547.64B"},
+        18: {"name": "Oracle", "ticker": "ORCL", "market_cap": "498.36B"},
+        19: {"name": "Mastercard", "ticker": "MA", "market_cap": "449.63B"},
+        20: {"name": "Costco Wholesale", "ticker": "COST", "market_cap": "448.60B"}
+    },
     2025: {
         1: {"name": "NVIDIA", "ticker": "NVDA", "market_cap": "4.533T"},
         2: {"name": "Apple", "ticker": "AAPL", "market_cap": "4.017T"},
@@ -570,5 +594,333 @@ top_20_spx_companies_by_year = {
         18: {"name": "Home Depot", "ticker": "HD", "market_cap": "106.04B"},
         19: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "104.88B"},
         20: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "101.45B"}
+    },
+    1999: {
+        1: {"name": "Microsoft", "ticker": "MSFT", "market_cap": "604.18B"},
+        2: {"name": "Cisco Systems", "ticker": "CSCO", "market_cap": "355.12B"},
+        3: {"name": "Walmart", "ticker": "WMT", "market_cap": "307.84B"},
+        4: {"name": "General Electric", "ticker": "GE", "market_cap": "305.13B"},
+        5: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "280.12B"},
+        6: {"name": "Intel", "ticker": "INTC", "market_cap": "274.43B"},
+        7: {"name": "Citigroup", "ticker": "C", "market_cap": "201.16B"},
+        8: {"name": "IBM", "ticker": "IBM", "market_cap": "183.82B"},
+        9: {"name": "Home Depot", "ticker": "HD", "market_cap": "158.33B"},
+        10: {"name": "Oracle", "ticker": "ORCL", "market_cap": "158.09B"},
+        11: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "143.97B"},
+        12: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "142.95B"},
+        13: {"name": "Merck", "ticker": "MRK", "market_cap": "140.76B"},
+        14: {"name": "AIG", "ticker": "AIG", "market_cap": "138.93B"},
+        15: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "129.57B"},
+        16: {"name": "Qualcomm", "ticker": "QCOM", "market_cap": "124.70B"},
+        17: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "121.02B"},
+        18: {"name": "Pfizer", "ticker": "PFE", "market_cap": "118.26B"},
+        19: {"name": "AT&T", "ticker": "T", "market_cap": "116.70B"},
+        20: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "95.61B"}
+    },
+    1998: {
+        1: {"name": "Microsoft", "ticker": "MSFT", "market_cap": "348.11B"},
+        2: {"name": "General Electric", "ticker": "GE", "market_cap": "199.82B"},
+        3: {"name": "Intel", "ticker": "INTC", "market_cap": "196.52B"},
+        4: {"name": "Walmart", "ticker": "WMT", "market_cap": "181.06B"},
+        5: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "177.55B"},
+        6: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "165.19B"},
+        7: {"name": "IBM", "ticker": "IBM", "market_cap": "161.32B"},
+        8: {"name": "Merck", "ticker": "MRK", "market_cap": "156.56B"},
+        9: {"name": "Pfizer", "ticker": "PFE", "market_cap": "153.29B"},
+        10: {"name": "Cisco Systems", "ticker": "CSCO", "market_cap": "145.99B"},
+        11: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "126.66B"},
+        12: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "120.13B"},
+        13: {"name": "Citigroup", "ticker": "C", "market_cap": "119.28B"},
+        14: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "112.73B"},
+        15: {"name": "Bank of America", "ticker": "BAC", "market_cap": "103.69B"},
+        16: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "97.41B"},
+        17: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "85.10B"},
+        18: {"name": "Home Depot", "ticker": "HD", "market_cap": "84.23B"},
+        19: {"name": "AIG", "ticker": "AIG", "market_cap": "84.13B"},
+        20: {"name": "AT&T", "ticker": "T", "market_cap": "78.71B"}
+    },
+    1997: {
+        1: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "164.75B"},
+        2: {"name": "Microsoft", "ticker": "MSFT", "market_cap": "157.36B"},
+        3: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "150.34B"},
+        4: {"name": "General Electric", "ticker": "GE", "market_cap": "143.39B"},
+        5: {"name": "Intel", "ticker": "INTC", "market_cap": "114.37B"},
+        6: {"name": "Merck", "ticker": "MRK", "market_cap": "113.80B"},
+        7: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "106.23B"},
+        8: {"name": "IBM", "ticker": "IBM", "market_cap": "95.74B"},
+        9: {"name": "Pfizer", "ticker": "PFE", "market_cap": "91.44B"},
+        10: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "89.43B"},
+        11: {"name": "Walmart", "ticker": "WMT", "market_cap": "88.60B"},
+        12: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "88.60B"},
+        13: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "77.35B"},
+        14: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "70.66B"},
+        15: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "67.02B"},
+        16: {"name": "AIG", "ticker": "AIG", "market_cap": "63.10B"},
+        17: {"name": "Citigroup", "ticker": "C", "market_cap": "61.69B"},
+        18: {"name": "Fannie Mae", "ticker": "FNMA", "market_cap": "58.94B"},
+        19: {"name": "Cisco Systems", "ticker": "CSCO", "market_cap": "56.04B"},
+        20: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "54.45B"}
+    },
+    1996: {
+        1: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "130.56B"},
+        2: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "121.72B"},
+        3: {"name": "Intel", "ticker": "INTC", "market_cap": "107.55B"},
+        4: {"name": "Microsoft", "ticker": "MSFT", "market_cap": "99.41B"},
+        5: {"name": "General Electric", "ticker": "GE", "market_cap": "97.40B"},
+        6: {"name": "Merck", "ticker": "MRK", "market_cap": "86.42B"},
+        7: {"name": "IBM", "ticker": "IBM", "market_cap": "73.51B"},
+        8: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "72.53B"},
+        9: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "66.29B"},
+        10: {"name": "Walmart", "ticker": "WMT", "market_cap": "52.17B"},
+        11: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "51.90B"},
+        12: {"name": "Pfizer", "ticker": "PFE", "market_cap": "50.73B"},
+        13: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "47.08B"},
+        14: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "45.63B"},
+        15: {"name": "Chevron", "ticker": "CVX", "market_cap": "42.45B"},
+        16: {"name": "AIG", "ticker": "AIG", "market_cap": "42.15B"},
+        17: {"name": "Cisco Systems", "ticker": "CSCO", "market_cap": "41.72B"},
+        18: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "40.37B"},
+        19: {"name": "Fannie Mae", "ticker": "FNMA", "market_cap": "39.76B"},
+        20: {"name": "JPMorgan Chase", "ticker": "JPM", "market_cap": "38.49B"}
+    },
+    1995: {
+        1: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "100.74B"},
+        2: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "93.20B"},
+        3: {"name": "General Electric", "ticker": "GE", "market_cap": "73.57B"},
+        4: {"name": "Merck", "ticker": "MRK", "market_cap": "72.73B"},
+        5: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "56.51B"},
+        6: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "55.38B"},
+        7: {"name": "Microsoft", "ticker": "MSFT", "market_cap": "51.98B"},
+        8: {"name": "Walmart", "ticker": "WMT", "market_cap": "51.06B"},
+        9: {"name": "IBM", "ticker": "IBM", "market_cap": "48.72B"},
+        10: {"name": "Intel", "ticker": "INTC", "market_cap": "47.05B"},
+        11: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "43.95B"},
+        12: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "41.24B"},
+        13: {"name": "Pfizer", "ticker": "PFE", "market_cap": "37.98B"},
+        14: {"name": "AIG", "ticker": "AIG", "market_cap": "36.35B"},
+        15: {"name": "Chevron", "ticker": "CVX", "market_cap": "34.15B"},
+        16: {"name": "Fannie Mae", "ticker": "FNMA", "market_cap": "33.65B"},
+        17: {"name": "McDonald's", "ticker": "MCD", "market_cap": "31.43B"},
+        18: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "31.02B"},
+        19: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "30.91B"},
+        20: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "29.25B"}
+    },
+    1994: {
+        1: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "75.42B"},
+        2: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "66.32B"},
+        3: {"name": "General Electric", "ticker": "GE", "market_cap": "52.23B"},
+        4: {"name": "Walmart", "ticker": "WMT", "market_cap": "48.84B"},
+        5: {"name": "Merck", "ticker": "MRK", "market_cap": "43.25B"},
+        6: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "42.14B"},
+        7: {"name": "IBM", "ticker": "IBM", "market_cap": "41.23B"},
+        8: {"name": "Microsoft", "ticker": "MSFT", "market_cap": "35.48B"},
+        9: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "35.20B"},
+        10: {"name": "Chevron", "ticker": "CVX", "market_cap": "29.07B"},
+        11: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "28.73B"},
+        12: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "28.13B"},
+        13: {"name": "Intel", "ticker": "INTC", "market_cap": "26.47B"},
+        14: {"name": "AIG", "ticker": "AIG", "market_cap": "25.64B"},
+        15: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "24.14B"},
+        16: {"name": "Pfizer", "ticker": "PFE", "market_cap": "23.07B"},
+        17: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "21.70B"},
+        18: {"name": "Home Depot", "ticker": "HD", "market_cap": "20.78B"},
+        19: {"name": "McDonald's", "ticker": "MCD", "market_cap": "20.43B"},
+        20: {"name": "Fannie Mae", "ticker": "FNMA", "market_cap": "19.84B"}
+    },
+    1993: {
+        1: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "78.40B"},
+        2: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "57.90B"},
+        3: {"name": "Walmart", "ticker": "WMT", "market_cap": "57.46B"},
+        4: {"name": "General Electric", "ticker": "GE", "market_cap": "53.71B"},
+        5: {"name": "Merck", "ticker": "MRK", "market_cap": "38.78B"},
+        6: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "38.61B"},
+        7: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "32.66B"},
+        8: {"name": "IBM", "ticker": "IBM", "market_cap": "31.38B"},
+        9: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "28.86B"},
+        10: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "28.39B"},
+        11: {"name": "Chevron", "ticker": "CVX", "market_cap": "28.38B"},
+        12: {"name": "Intel", "ticker": "INTC", "market_cap": "25.92B"},
+        13: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "25.85B"},
+        14: {"name": "AIG", "ticker": "AIG", "market_cap": "23.07B"},
+        15: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "22.92B"},
+        16: {"name": "Fannie Mae", "ticker": "FNMA", "market_cap": "21.31B"},
+        17: {"name": "Pfizer", "ticker": "PFE", "market_cap": "21.00B"},
+        18: {"name": "McDonald's", "ticker": "MCD", "market_cap": "20.16B"},
+        19: {"name": "3M", "ticker": "MMM", "market_cap": "18.80B"},
+        20: {"name": "AT&T", "ticker": "T", "market_cap": "18.66B"}
+    },
+    1992: {
+        1: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "75.92B"},
+        2: {"name": "Walmart", "ticker": "WMT", "market_cap": "73.55B"},
+        3: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "54.72B"},
+        4: {"name": "Merck", "ticker": "MRK", "market_cap": "44.66B"},
+        5: {"name": "General Electric", "ticker": "GE", "market_cap": "43.78B"},
+        6: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "36.21B"},
+        7: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "33.28B"},
+        8: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "33.16B"},
+        9: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "33.10B"},
+        10: {"name": "IBM", "ticker": "IBM", "market_cap": "27.50B"},
+        11: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "23.03B"},
+        12: {"name": "Pfizer", "ticker": "PFE", "market_cap": "22.36B"},
+        13: {"name": "Home Depot", "ticker": "HD", "market_cap": "22.32B"},
+        14: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "22.24B"},
+        15: {"name": "Fannie Mae", "ticker": "FNMA", "market_cap": "20.79B"},
+        16: {"name": "AIG", "ticker": "AIG", "market_cap": "20.31B"},
+        17: {"name": "Intel", "ticker": "INTC", "market_cap": "18.21B"},
+        18: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "17.78B"},
+        19: {"name": "3M", "ticker": "MMM", "market_cap": "17.74B"},
+        20: {"name": "McDonald's", "ticker": "MCD", "market_cap": "17.72B"}
+    },
+    1991: {
+        1: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "75.61B"},
+        2: {"name": "Walmart", "ticker": "WMT", "market_cap": "67.61B"},
+        3: {"name": "Merck", "ticker": "MRK", "market_cap": "57.94B"},
+        4: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "53.33B"},
+        5: {"name": "IBM", "ticker": "IBM", "market_cap": "48.54B"},
+        6: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "43.64B"},
+        7: {"name": "General Electric", "ticker": "GE", "market_cap": "39.57B"},
+        8: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "38.14B"},
+        9: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "31.52B"},
+        10: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "26.73B"},
+        11: {"name": "Pfizer", "ticker": "PFE", "market_cap": "26.27B"},
+        12: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "24.42B"},
+        13: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "19.11B"},
+        14: {"name": "Fannie Mae", "ticker": "FNMA", "market_cap": "18.76B"},
+        15: {"name": "Altria Group", "ticker": "MO", "market_cap": "17.35B"},
+        16: {"name": "AIG", "ticker": "AIG", "market_cap": "17.28B"},
+        17: {"name": "3M", "ticker": "MMM", "market_cap": "16.80B"},
+        18: {"name": "Boeing", "ticker": "BA", "market_cap": "16.30B"},
+        19: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "14.97B"},
+        20: {"name": "Kellogg Company", "ticker": "K", "market_cap": "14.75B"}
+    },
+    1990: {
+        1: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "64.43B"},
+        2: {"name": "IBM", "ticker": "IBM", "market_cap": "61.68B"},
+        3: {"name": "Walmart", "ticker": "WMT", "market_cap": "34.23B"},
+        4: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "33.40B"},
+        5: {"name": "Merck", "ticker": "MRK", "market_cap": "31.31B"},
+        6: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "31.07B"},
+        7: {"name": "General Electric", "ticker": "GE", "market_cap": "30.00B"},
+        8: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "29.79B"},
+        9: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "23.90B"},
+        10: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "21.08B"},
+        11: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "20.50B"},
+        12: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "19.58B"},
+        13: {"name": "Boeing", "ticker": "BA", "market_cap": "15.59B"},
+        14: {"name": "3M", "ticker": "MMM", "market_cap": "15.17B"},
+        15: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "13.51B"},
+        16: {"name": "AIG", "ticker": "AIG", "market_cap": "13.49B"},
+        17: {"name": "Pfizer", "ticker": "PFE", "market_cap": "12.67B"},
+        18: {"name": "AT&T", "ticker": "T", "market_cap": "12.58B"},
+        19: {"name": "Schlumberger", "ticker": "SLB", "market_cap": "12.24B"},
+        20: {"name": "Altria Group", "ticker": "MO", "market_cap": "11.27B"}
+    },
+    1989: {
+        1: {"name": "Exxon Mobil", "ticker": "XOM", "market_cap": "62.59B"},
+        2: {"name": "IBM", "ticker": "IBM", "market_cap": "52.03B"},
+        3: {"name": "General Electric", "ticker": "GE", "market_cap": "35.78B"},
+        4: {"name": "Bristol-Myers Squibb", "ticker": "BMY", "market_cap": "28.00B"},
+        5: {"name": "Merck", "ticker": "MRK", "market_cap": "27.58B"},
+        6: {"name": "Coca-Cola", "ticker": "KO", "market_cap": "26.37B"},
+        7: {"name": "Walmart", "ticker": "WMT", "market_cap": "25.39B"},
+        8: {"name": "Procter & Gamble", "ticker": "PG", "market_cap": "22.99B"},
+        9: {"name": "Verizon Communications", "ticker": "VZ", "market_cap": "21.99B"},
+        10: {"name": "Johnson & Johnson", "ticker": "JNJ", "market_cap": "19.77B"},
+        11: {"name": "Eli Lilly", "ticker": "LLY", "market_cap": "19.06B"},
+        12: {"name": "PepsiCo", "ticker": "PEP", "market_cap": "16.86B"},
+        13: {"name": "Walt Disney", "ticker": "DIS", "market_cap": "15.17B"},
+        14: {"name": "AT&T", "ticker": "T", "market_cap": "14.37B"},
+        15: {"name": "3M", "ticker": "MMM", "market_cap": "14.36B"},
+        16: {"name": "AIG", "ticker": "AIG", "market_cap": "14.01B"},
+        17: {"name": "Boeing", "ticker": "BA", "market_cap": "13.68B"},
+        18: {"name": "McDonald's", "ticker": "MCD", "market_cap": "12.77B"},
+        19: {"name": "Pfizer", "ticker": "PFE", "market_cap": "10.90B"},
+        20: {"name": "Schlumberger", "ticker": "SLB", "market_cap": "10.37B"}
     }
 }
+
+top_20_vs_spx_market_cap_by_year = {
+    2026: {"top_20_market_cap": "32.267T", "spx_market_cap": "64.693T"},
+    2025: {"top_20_market_cap": "30.985T", "spx_market_cap": "61.747T"},
+    2024: {"top_20_market_cap": "25.461T", "spx_market_cap": "52.871T"},
+    2023: {"top_20_market_cap": "17.983T", "spx_market_cap": "40.040T"},
+    2022: {"top_20_market_cap": "12.217T", "spx_market_cap": "32.130T"},
+    2021: {"top_20_market_cap": "17.120T", "spx_market_cap": "40.360T"},
+    2020: {"top_20_market_cap": "13.141T", "spx_market_cap": "31.660T"},
+    2019: {"top_20_market_cap": "9.759T", "spx_market_cap": "26.760T"},
+    2018: {"top_20_market_cap": "7.388T", "spx_market_cap": "21.030T"},
+    2017: {"top_20_market_cap": "7.618T", "spx_market_cap": "22.820T"},
+    2016: {"top_20_market_cap": "6.018T", "spx_market_cap": "19.270T"},
+    2015: {"top_20_market_cap": "5.477T", "spx_market_cap": "17.900T"},
+    2014: {"top_20_market_cap": "5.348T", "spx_market_cap": "18.250T"},
+    2013: {"top_20_market_cap": "4.893T", "spx_market_cap": "16.490T"},
+    2012: {"top_20_market_cap": "4.091T", "spx_market_cap": "12.740T"},
+    2011: {"top_20_market_cap": "3.726T", "spx_market_cap": "11.390T"},
+    2010: {"top_20_market_cap": "3.588T", "spx_market_cap": "11.430T"},
+    2009: {"top_20_market_cap": "3.264T", "spx_market_cap": "9.928T"},
+    2008: {"top_20_market_cap": "2.696T", "spx_market_cap": "7.852T"},
+    2007: {"top_20_market_cap": "3.928T", "spx_market_cap": "12.870T"},
+    2006: {"top_20_market_cap": "3.740T", "spx_market_cap": "12.730T"},
+    2005: {"top_20_market_cap": "3.230T", "spx_market_cap": "11.250T"},
+    2004: {"top_20_market_cap": "3.360T", "spx_market_cap": "11.290T"},
+    2003: {"top_20_market_cap": "3.230T", "spx_market_cap": "10.290T"},
+    2002: {"top_20_market_cap": "2.686T", "spx_market_cap": "8.107T"},
+    2001: {"top_20_market_cap": "3.491T", "spx_market_cap": "10.460T"},
+    2000: {"top_20_market_cap": "3.729T", "spx_market_cap": "11.710T"},
+    1999: {"top_20_market_cap": "4.101T", "spx_market_cap": "12.310T"},
+    1998: {"top_20_market_cap": "2.897T", "spx_market_cap": "10.170T"},
+    1997: {"top_20_market_cap": "1.913T", "spx_market_cap": "7.910T"},
+    1996: {"top_20_market_cap": "1.348T", "spx_market_cap": "5.930T"},
+    1995: {"top_20_market_cap": "1.001T", "spx_market_cap": "4.820T"},
+    1994: {"top_20_market_cap": "0.708T", "spx_market_cap": "3.500T"},
+    1993: {"top_20_market_cap": "0.672T", "spx_market_cap": "3.450T"},
+    1992: {"top_20_market_cap": "0.658T", "spx_market_cap": "3.130T"},
+    1991: {"top_20_market_cap": "0.669T", "spx_market_cap": "2.910T"},
+    1990: {"top_20_market_cap": "0.507T", "spx_market_cap": "2.230T"},
+    1989: {"top_20_market_cap": "0.464T", "spx_market_cap": "2.300T"} 
+}
+
+import json
+import yfinance as yf
+import os
+import time
+
+if not os.path.exists("data"):
+    os.makedirs("data")
+
+if not os.path.exists("data/spx"):
+    os.makedirs("data/spx")
+
+if not os.path.exists("data/top-20"):
+    os.makedirs("data/top-20")
+
+print("Saving top 20 SPX companies by market cap by year to JSON")
+with open("data/top-20-spx-companies-by-market-cap-by-year.json", "w") as f:
+    json.dump(top_20_spx_companies_by_market_cap_by_year, f, indent=4)
+print("Saving top 20 vs SPX market cap by year to JSON")
+with open("data/top-20-vs-spx-market-cap-by-year.json", "w") as f:
+    json.dump(top_20_vs_spx_market_cap_by_year, f, indent=4)
+
+interval = "1mo"
+
+for year in top_20_spx_companies_by_market_cap_by_year.keys():
+
+    start = str(year) + "-01-01"
+    end = str(year) + "-12-31"
+
+    print("========== " + str(year) + " ==========")
+    print("Downloading SPX data")
+    spx_close_prices = yf.download(tickers="^GSPC", start=start, end=end, interval=interval, auto_adjust=True, progress=False)["Close"]
+    print("Saving SPX data to CSV")
+    spx_close_prices.to_csv("data/spx/" + str(year) + "-" + interval + ".csv", index=True)
+
+    company_tickers = []
+    for company in top_20_spx_companies_by_market_cap_by_year[year].values():
+        company_ticker = company["ticker"]
+        company_tickers.append(company_ticker)
+
+    print("Downloading top 20 SPX companies data")
+    company_close_prices = yf.download(tickers=company_tickers, start=start, end=end, interval=interval, auto_adjust=True, progress=False)["Close"]
+    print("Saving top 20 SPX companies data to CSV")
+    company_close_prices.to_csv("data/top-20/" + str(year) + "-" + interval + ".csv", index=True)
+    time.sleep(2)
