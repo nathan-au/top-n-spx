@@ -3,14 +3,11 @@ import pandas as pd
 import json
 
 
-def backtest_strategy(start_year, end_year, top_n=1, interval="1mo"):
-    with open("data/top-20-spx-companies-by-market-cap-by-year.json", 'r') as f:
+def backtest_strategy(start_year, end_year, top_n, interval):
+    with open("data/top-20-spx-companies-by-market-cap-by-year.json", "r") as f:
         top_20_spx_companies_by_market_cap_by_year = json.load(f)
 
-    interval = "1mo"
-    top_n = 5
-
-    all_returns = []
+    backtest_returns = []
 
     years = []
     for year in range(start_year, end_year + 1):
@@ -29,7 +26,7 @@ def backtest_strategy(start_year, end_year, top_n=1, interval="1mo"):
         company_close_prices = pd.read_csv("data/top-20/" + str(year) + "-" + interval + ".csv", index_col=0)
 
         top_n_tickers = []
-        for n in range(1, top_n + 1):
+        for n in range(1, top_n + 1 ):
             top_n_tickers.append(top_20_spx_companies_by_market_cap_by_year[str(year)][str(n)]["ticker"])
         
         top_n_close_prices = company_close_prices[top_n_tickers]
@@ -37,77 +34,148 @@ def backtest_strategy(start_year, end_year, top_n=1, interval="1mo"):
         year_returns = (top_n_close_prices.iloc[-1] - top_n_close_prices.iloc[0]) / top_n_close_prices.iloc[0] * 100
 
         strategy_return = year_returns.mean()
-        all_returns.append({
+        backtest_returns.append({
             "year": year,
-            "spx": spx_percent_return,
-            "strategy": strategy_return
+            "strategy": strategy_return,
+            "spx": spx_percent_return
         })
 
-    df_all = pd.DataFrame(all_returns).sort_values("year")
-    df_all["spx_cum"] = (df_all["spx"] / 100 + 1).cumprod()
-    df_all["strategy_cum"] = (df_all["strategy"] / 100 + 1).cumprod()
-    df_all["year"] = df_all["year"].astype(int)
-    # print(df_all)
+    df = pd.DataFrame(backtest_returns).sort_values("year")
+    df["strategy_cum"] = (df["strategy"] / 100 + 1).cumprod()
+    df["spx_cum"] = (df["spx"] / 100 + 1).cumprod()
+    df["year"] = df["year"].astype(int)
 
-    # 1. Load the Fama-French RF data
-    with open("data/fama-french-risk-free-rates-by-year.json", 'r') as f:
-        rf_data = json.load(f)
+    with open("data/fama-french-risk-free-rates-by-year.json", "r") as f:
+        fama_french_risk_free_rates_by_year = json.load(f)
 
-    # 2. Map the RF to each year in your results dataframe
-    # Ensures both are strings for a proper match
-    df_all["rf"] = df_all["year"].astype(str).map(rf_data)
+    df["rf"] = df["year"].astype(str).map(fama_french_risk_free_rates_by_year)
 
-    # 3. Calculate Annual Excess Returns
-    df_all["excess_strategy"] = df_all["strategy"] - df_all["rf"]
-    df_all["excess_spx"] = df_all["spx"] - df_all["rf"]
+    df["strategy_excess"] = df["strategy"] - df["rf"]
+    df["spx_excess"] = df["spx"] - df["rf"]
 
-    # --- SHARPE RATIO ---
-    # Formula: Mean(Excess Returns) / Standard Deviation(Returns)
-    strategy_sharpe = df_all["excess_strategy"].mean() / df_all["strategy"].std()
-    spx_sharpe = df_all["excess_spx"].mean() / df_all["spx"].std()
+    strategy_sharpe = df["strategy_excess"].mean() / df["strategy"].std()
+    spx_sharpe = df["spx_excess"].mean() / df["spx"].std()
 
-    # --- SORTINO RATIO ---
-    # 1. Isolate the downside (only years where strategy underperformed the risk-free rate)
-    strategy_downside = df_all.loc[df_all["excess_strategy"] < 0, "excess_strategy"]
-    spx_downside = df_all.loc[df_all["excess_spx"] < 0, "excess_spx"]
+    strategy_downside = df.loc[df["strategy_excess"] < 0, "strategy_excess"]
+    spx_downside = df.loc[df["spx_excess"] < 0, "spx_excess"]
 
-    # 2. Calculate Downside Deviation
-    strategy_downside_dev = strategy_downside.std()
-    spx_downside_dev = spx_downside.std()
-
-    # 3. Final Ratio Calculation
-    strategy_sortino = df_all["excess_strategy"].mean() / strategy_downside_dev
-    spx_sortino = df_all["excess_spx"].mean() / spx_downside_dev
+    strategy_sortino = df["strategy_excess"].mean() / strategy_downside.std()
+    spx_sortino = df["spx_excess"].mean() / spx_downside.std()
  
-    # 1. Calculate Strategy Max Drawdown
-    # .cummax() keeps track of the highest value seen up to that date
-    df_all["strategy_peak"] = df_all["strategy_cum"].cummax()
-    df_all["strategy_dd"] = (df_all["strategy_cum"] - df_all["strategy_peak"]) / df_all["strategy_peak"]
-    max_dd_strategy = df_all["strategy_dd"].min() * 100
+    df["strategy_peak"] = df["strategy_cum"].cummax()
+    df["spx_peak"] = df["spx_cum"].cummax()
 
-    # 2. Calculate SPX Max Drawdown
-    df_all["spx_peak"] = df_all["spx_cum"].cummax()
-    df_all["spx_dd"] = (df_all["spx_cum"] - df_all["spx_peak"]) / df_all["spx_peak"]
-    max_dd_spx = df_all["spx_dd"].min() * 100
+    df["strategy_dd"] = (df["strategy_cum"] - df["strategy_peak"]) / df["strategy_peak"]
+    df["spx_dd"] = (df["spx_cum"] - df["spx_peak"]) / df["spx_peak"]
 
-    # 3. Find the "Pain Year" (When did the worst drop happen?)
-    worst_year_strategy = df_all.loc[df_all["strategy_dd"] == df_all["strategy_dd"].min(), "year"].values[0]
-    worst_year_spx = df_all.loc[df_all["spx_dd"] == df_all["spx_dd"].min(), "year"].values[0]
+    strategy_max_dd = df["strategy_dd"].min() * 100
+    spx_max_dd = df["spx_dd"].min() * 100
 
-     # --- OUTPUT ---
-    print("-" * 50)
-    print(f"Strategy | Sharpe: {strategy_sharpe:.2f} | Sortino: {strategy_sortino:.2f} | Max Drawdown: {max_dd_strategy:.2f}% ({worst_year_strategy})")
-    print(f"SPX  | Sharpe: {spx_sharpe:.2f} | Sortino: {spx_sortino:.2f} | Max Drawdown: {max_dd_spx:.2f}% ({worst_year_spx})")
+    strategy_worst_year = df.loc[df["strategy_dd"] == df["strategy_dd"].min(), "year"].values[0]
+    spx_worst_year = df.loc[df["spx_dd"] == df["spx_dd"].min(), "year"].values[0]
 
-    plt.plot(df_all["year"], df_all["spx_cum"], label="SPX")
-    plt.plot(df_all["year"], df_all["strategy_cum"], label="Top " + str(top_n))
+    strategy_final_return = (df["strategy_cum"].iloc[-1] - 1) * 100
+    spx_final_return = (df["spx_cum"].iloc[-1] - 1) * 100
 
-    plt.legend()
-    plt.title("Cumulative Performance")
-    plt.grid()
-    plt.show()
+    label_width = 20
+    column_width = 15
+    table_width = label_width + 3 + column_width + 3 + column_width
+    
+    print(f"{f"Top {top_n} SPX Strategy ({start_year} - {end_year})":^{table_width}}")
+    print("-" * table_width)
+    print(f"{"Metric":<{label_width}} | {"Strategy":<{column_width}} | {"SPX":<{column_width}}")
+    print("-" * table_width)
+    print(f"{"Total Return":<{label_width}} | {f"{strategy_final_return:.2f}%":<{column_width}} | {f"{spx_final_return:.2f}%":<{column_width}}")
+    print(f"{"Sharpe Ratio":<{label_width}} | {strategy_sharpe:<{column_width}.2f} | {spx_sharpe:<{column_width}.2f}")
+    print(f"{"Sortino Ratio":<{label_width}} | {strategy_sortino:<{column_width}.2f} | {spx_sortino:<{column_width}.2f}")
+    print(f"{"Max Drawdown":<{label_width}} | {f"{strategy_max_dd:.2f}%":<{column_width}} | {f"{spx_max_dd:.2f}%":<{column_width}}")
+    print(f"{"Worst Year":<{label_width}} | {str(strategy_worst_year):<{column_width}} | {str(spx_worst_year):<{column_width}}")
+    print("-" * table_width)
+
+    return {
+        "params": {
+            "start_year": start_year,
+            "end_year": end_year,
+            "top_n": top_n,
+            "interval": interval
+        },
+        "metrics": {
+            "strategy_total_return": strategy_final_return,
+            "spx_total_return": spx_final_return,
+            "strategy_sharpe": strategy_sharpe,
+            "spx_sharpe": spx_sharpe,
+            "strategy_sortino": strategy_sortino,
+            "spx_sortino": spx_sortino,
+            "strategy_max_drawdown": strategy_max_dd,
+            "spx_max_drawdown": spx_max_dd,
+            "strategy_worst_year": strategy_worst_year,
+            "spx_worst_year": spx_worst_year
+        },
+        "data": df  # full yearly data
+    }
 
 if __name__ == "__main__":
-    # 1989 - 2026
-    # max top_n = 20
-    backtest_strategy(start_year=2018, end_year=2025, top_n=5)
+    # min start_year = 1989, max end_year = 2026, max top_n = 20
+    # for n in range (1, 20):
+    #     backtest_strategy(start_year=2000, end_year=2025, top_n=n, interval="1mo")
+
+    results = []
+
+    for n in range(1, 21):
+        result = backtest_strategy(
+            start_year=2000,
+            end_year=2025,
+            top_n=n,
+            interval="1mo"
+        )
+        results.append(result)
+    summary = []
+
+    for r in results:
+        summary.append({
+            "top_n": r["params"]["top_n"],
+            "return": r["metrics"]["strategy_total_return"],
+            "sharpe": r["metrics"]["strategy_sharpe"],
+            "sortino": r["metrics"]["strategy_sortino"],
+            "max_dd": r["metrics"]["strategy_max_drawdown"]
+        })
+
+    summary_df = pd.DataFrame(summary)
+    summary_df = summary_df.sort_values("return", ascending=False)
+    summary_df = summary_df.reset_index(drop=True)
+    print(summary_df)
+
+    plt.figure(figsize=(10, 6))
+    plt.scatter(summary_df["max_dd"].abs(), summary_df["return"], c=summary_df["top_n"], cmap='viridis', s=100)
+    plt.colorbar(label='Top N Value')
+
+    # Label each point with its N
+    for i, txt in enumerate(summary_df["top_n"]):
+        plt.annotate(txt, (summary_df["max_dd"].abs()[i], summary_df["return"][i]), xytext=(5,5), textcoords='offset points')
+
+        # 1. Sort by risk (Max Drawdown)
+    sorted_df = summary_df.sort_values("max_dd", ascending=False) # max_dd is negative, so this goes left-to-right
+
+    frontier_x = []
+    frontier_y = []
+    current_max_return = -1
+
+    # 2. Iterate and find 'un-dominated' points
+    for _, row in sorted_df.iterrows():
+        risk = abs(row["max_dd"])
+        ret = row["return"]
+        
+        if ret > current_max_return:
+            frontier_x.append(risk)
+            frontier_y.append(ret)
+            current_max_return = ret
+
+    # 3. Plot the curve on your existing chart
+    plt.plot(frontier_x, frontier_y, color='red', linestyle='--', linewidth=2, label='Efficient Frontier')
+    plt.legend()
+
+    plt.title("Top n SPX Efficiency Frontier")
+    plt.xlabel("Risk (Max Drawdown %)")
+    plt.ylabel("Reward (Total Return %)")
+    plt.grid(True, alpha=0.3)
+    plt.show()
