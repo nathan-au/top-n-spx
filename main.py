@@ -16,23 +16,30 @@ def backtest_strategy(start_year, end_year, top_n, interval):
 
     for year in years:
 
+        # Returns are year-end to year-end: buy at the last close of the prior year, sell at the
+        # last close of this year. (The first bar of a year's file is already January's close.)
+        prior_spx_close_prices = pd.read_csv("data/spx/" + str(year - 1) + "-" + interval + ".csv", index_col=0)
         spx_close_prices = pd.read_csv("data/spx/" + str(year) + "-" + interval + ".csv", index_col=0)
 
-        spx_start_price = spx_close_prices.iloc[0].item()
+        spx_start_price = prior_spx_close_prices.iloc[-1].item()
         spx_end_price = spx_close_prices.iloc[-1].item()
         spx_percent_return = (spx_end_price - spx_start_price) / spx_start_price * 100
 
-        year_returns = []
-        
-        company_close_prices = pd.read_csv("data/top-20/" + str(year) + "-" + interval + ".csv", index_col=0)
-
+        # No look-ahead: the portfolio is the top n of the PRIOR year-end ranking, the only
+        # ranking known when the position is opened.
         top_n_tickers = []
         for n in range(1, top_n + 1 ):
-            top_n_tickers.append(top_20_spx_companies_by_market_cap_by_year[str(year)][str(n)]["ticker"])
-        
-        top_n_close_prices = company_close_prices[top_n_tickers]
+            top_n_tickers.append(top_20_spx_companies_by_market_cap_by_year[str(year - 1)][str(n)]["ticker"])
 
-        year_returns = (top_n_close_prices.iloc[-1] - top_n_close_prices.iloc[0]) / top_n_close_prices.iloc[0] * 100
+        # Held prices run from the prior December (purchase) through this December (sale).
+        held_close_prices = pd.read_csv("data/held/" + str(year) + "-" + interval + ".csv", index_col=0)
+        top_n_close_prices = held_close_prices[top_n_tickers]
+        assert not top_n_close_prices.isna().any().any(), "Missing prices for " + str(year)
+
+        purchase_prices = top_n_close_prices[top_n_close_prices.index < str(year)].iloc[-1]
+        sale_prices = top_n_close_prices.iloc[-1]
+
+        year_returns = (sale_prices - purchase_prices) / purchase_prices * 100
 
         strategy_return = year_returns.mean()
         backtest_returns.append({
