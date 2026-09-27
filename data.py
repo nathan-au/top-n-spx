@@ -8,7 +8,7 @@ import os
 import time
 
 def setup_directory(directory):
-    sub_directories = ["spx", "top-20", "held"]
+    sub_directories = ["spx", "held"]
 
     for sub_directory in sub_directories:
         sub_directory_path = os.path.join(directory, sub_directory)    
@@ -43,20 +43,6 @@ def download_and_save_data(interval, target_year, overwrite):
             print("Saving SPX data")
             spx_close_prices.to_csv(path_or_buf=spx_csv_path, index=True)
 
-        top_20_csv_path = "data/top-20/" + str(year) + "-" + interval + ".csv"
-        if not overwrite and os.path.exists(top_20_csv_path):
-            print("Skipping top 20 data (already exists)")
-        else:
-            company_tickers = []
-            for company in top_20_spx_companies_by_market_cap_by_year[year].values():
-                company_ticker = company["ticker"]
-                company_tickers.append(company_ticker)
-
-            print("Downloading top 20 SPX companies data")
-            company_close_prices = yf.download(tickers=company_tickers, start=start, end=end, interval=interval, auto_adjust=True, progress=False)["Close"]
-            print("Saving top 20 SPX companies data")
-            company_close_prices.to_csv(path_or_buf=top_20_csv_path, index=True)
-        
         time.sleep(2)
 
 def download_and_save_held_data(interval, target_year, overwrite):
