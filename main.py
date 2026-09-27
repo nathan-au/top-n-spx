@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import json
+import numpy as np
 
 
 def backtest_strategy(start_year, end_year, top_n, interval):
@@ -53,15 +54,16 @@ def backtest_strategy(start_year, end_year, top_n, interval):
     df["strategy_excess"] = df["strategy"] - df["rf"]
     df["spx_excess"] = df["spx"] - df["rf"]
 
-    strategy_sharpe = df["strategy_excess"].mean() / df["strategy"].std()
-    spx_sharpe = df["spx_excess"].mean() / df["spx"].std()
+    strategy_sharpe = df["strategy_excess"].mean() / df["strategy_excess"].std()
+    spx_sharpe = df["spx_excess"].mean() / df["spx_excess"].std()
 
-    strategy_downside = df.loc[df["strategy_excess"] < 0, "strategy_excess"]
-    spx_downside = df.loc[df["spx_excess"] < 0, "spx_excess"]
+    strategy_downside_deviation = np.sqrt(((df["strategy_excess"].clip(upper=0))**2).mean())
 
-    strategy_sortino = df["strategy_excess"].mean() / strategy_downside.std()
-    spx_sortino = df["spx_excess"].mean() / spx_downside.std()
- 
+    strategy_sortino = df["strategy_excess"].mean() / strategy_downside_deviation
+
+    spx_downside_deviation = np.sqrt(((df["spx_excess"].clip(upper=0))**2).mean())
+    spx_sortino = df["spx_excess"].mean() / spx_downside_deviation
+
     df["strategy_peak"] = df["strategy_cum"].cummax()
     df["spx_peak"] = df["spx_cum"].cummax()
 

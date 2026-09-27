@@ -61,4 +61,4 @@ def download_and_save_data(interval, target_year, overwrite):
 
 if __name__ == "__main__":
     setup_directory(directory="data")
-    download_and_save_data(interval="1mo", target_year=2020, overwrite=False)
+    download_and_save_data(interval="1mo", target_year=-1, overwrite=False)
