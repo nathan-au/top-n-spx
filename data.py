@@ -39,7 +39,11 @@ def download_and_save_data(interval, target_year, overwrite):
             print("Skipping SPX data (already exists)")
         else:
             print("Downloading SPX data")
-            spx_close_prices = yf.download(tickers="^GSPC", start=start, end=end, interval=interval, auto_adjust=True, progress=False)["Close"]
+            # ^SP500TR is the S&P 500 TOTAL RETURN index (dividends reinvested), not the
+            # price-only ^GSPC. The held stocks are downloaded with auto_adjust=True (total
+            # return), so the benchmark must also be total return or it understates SPX by
+            # ~1.5-2%/year of forgone dividends, making the strategy look better than it is.
+            spx_close_prices = yf.download(tickers="^SP500TR", start=start, end=end, interval=interval, auto_adjust=True, progress=False)["Close"]
             print("Saving SPX data")
             spx_close_prices.to_csv(path_or_buf=spx_csv_path, index=True)
 
