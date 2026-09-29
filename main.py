@@ -149,21 +149,46 @@ if __name__ == "__main__":
             "max_dd": r["metrics"]["strategy_max_drawdown"]
         })
 
+    # SPX benchmark metrics don't depend on top_n, so any result carries them; add it
+    # as a row so it can be ranked alongside the strategies it's being compared to.
+    summary.append({
+        "top_n": "spx",
+        "return": results[0]["metrics"]["spx_total_return"],
+        "sharpe": results[0]["metrics"]["spx_sharpe"],
+        "sortino": results[0]["metrics"]["spx_sortino"],
+        "max_dd": results[0]["metrics"]["spx_max_drawdown"]
+    })
+
     summary_df = pd.DataFrame(summary)
     summary_df = summary_df.sort_values("return", ascending=False)
     summary_df = summary_df.reset_index(drop=True)
+
+    start_year = results[0]["params"]["start_year"]
+    end_year = results[0]["params"]["end_year"]
+    title = f"Top N SPX Strategy Sweep ({start_year} - {end_year})"
+    print("-" * len(title))
+    print(title)
+    print("-" * len(title))
     print(summary_df)
 
+    # The scatter/frontier below is colored and ranked by N, which the spx benchmark
+    # row (top_n == "spx") has none of, so it's plotted separately rather than mixed in.
+    plot_df = summary_df[summary_df["top_n"] != "spx"].copy()
+    plot_df["top_n"] = plot_df["top_n"].astype(int)
+    plot_df = plot_df.reset_index(drop=True)
+    spx_row = summary_df[summary_df["top_n"] == "spx"].iloc[0]
+
     plt.figure(figsize=(10, 6))
-    plt.scatter(summary_df["max_dd"].abs(), summary_df["return"], c=summary_df["top_n"], cmap='viridis', s=100)
+    plt.scatter(plot_df["max_dd"].abs(), plot_df["return"], c=plot_df["top_n"], cmap='viridis', s=100)
     plt.colorbar(label='Top N Value')
+    plt.scatter([abs(spx_row["max_dd"])], [spx_row["return"]], c='red', marker='*', s=200, label='SPX', zorder=5)
 
     # Label each point with its N
-    for i, txt in enumerate(summary_df["top_n"]):
-        plt.annotate(txt, (summary_df["max_dd"].abs()[i], summary_df["return"][i]), xytext=(5,5), textcoords='offset points')
+    for i, txt in enumerate(plot_df["top_n"]):
+        plt.annotate(txt, (plot_df["max_dd"].abs()[i], plot_df["return"][i]), xytext=(5,5), textcoords='offset points')
 
         # 1. Sort by risk (Max Drawdown)
-    sorted_df = summary_df.sort_values("max_dd", ascending=False) # max_dd is negative, so this goes left-to-right
+    sorted_df = plot_df.sort_values("max_dd", ascending=False) # max_dd is negative, so this goes left-to-right
 
     frontier_x = []
     frontier_y = []
